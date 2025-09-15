@@ -21,18 +21,17 @@ Our solution is a **full-stack system** with the following features:
 
 ## 3. High-Level Architecture  
 
-```text
-+----------------+       +------------------+       +---------------------+
-|  Student App   | --->  | Backend Service  | --->  | Matching Algorithm  |
-|  (Frontend)    |       | (API + DB Layer) |       |   (Find overlaps)   |
-+----------------+       +------------------+       +---------------------+
-        |                          |                           |
-        |    Enter location        |                           |
-        |------------------------->| Store/Process request     |
-        |                          |                           |
-        | <------------------------| Return nearby matches     |
-        |   Show matches + Chat    |                           |
-        
-## 4. Pseudo Code
+<img width="3840" height="598" alt="MDP Diagram _ Mermaid Chart-2025-09-15-082624" src="https://github.com/user-attachments/assets/465abf6e-9d5f-4d5a-85d1-ffba58ac6f35" />
 
-Student Matching by Route
+
+## 4. Pseudo Code  
+
+### Student Matching by Route
+```pseudo
+function findMatches(newStudent, allStudents):
+    matches = []
+    for student in allStudents:
+        if distance(newStudent.location, student.location) < threshold:
+            if destinationSimilarity(newStudent.destination, student.destination):
+                matches.append(student)
+    return matches
